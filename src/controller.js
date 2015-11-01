@@ -583,18 +583,32 @@ we’re wasted on the shores\n\
 and some nights I think it might be you\n\
 [unintelligible mumbling]"
 
-function init(){
-  var r_text = text.split("\n")
-  var myFunction = function() {
-    var i = Math.floor(r_text.length*Math.random())
-    var time = Math.floor(3000*Math.random())
-    document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase()
-    time = 900
-    setTimeout(myFunction, time)
+function controller(){
+  var r_text = text.split("\n") //TODO: Should be able to read from .txt files
+  var time = 900
+  var show_lyric = true
+  var toggleLyric = function() {
+    if (show_lyric) {
+      show_lyric = false
+    } else {
+      show_lyric = true
+    }
   }
-  myFunction();
-}
+  var getDates = function() {
+    document.getElementById("Dates").innerHTML = 'Tour Dates Go Here'
+    var url = 'http://api.songkick.com/api/3.0/artists/{3678791}/calendar.json?apikey={your_api_key}' //TODO: get api key and finish this section
+  }
+  var updateLyrics = function() {
+    var i = Math.floor(r_text.length*Math.random())
+    document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase()
+    setTimeout(updateLyrics, time)
+  }
+  getDates();
+  if (show_lyric){
+    updateLyrics();
+  }
+};
 
 $(function() {
-    init();
+    controller();
 });

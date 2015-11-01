@@ -23,10 +23,14 @@ h3 {
 }
 
 td {
-  vertical-align: top;
+  vertical-align: middle;
   padding-bottom: 0px
 }
 
 table {
   padding-bottom: 0px
+  text-align: center;
+  font: 20px arial, sans-serif;
+  /*color: #19beff;*/
+  color: #FF5A19;
 }
