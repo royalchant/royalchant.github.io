@@ -595,7 +595,7 @@ function controller(){
     }
   }
   var getDates = function() {
-    document.getElementById("Dates").innerHTML = 'Tour Dates Go Here'
+    // document.getElementById("Dates").innerHTML = 
     var url = 'http://api.songkick.com/api/3.0/artists/{3678791}/calendar.json?apikey={your_api_key}' //TODO: get api key and finish this section
   }
   var updateLyrics = function() {

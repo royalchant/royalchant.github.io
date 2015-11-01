@@ -34,3 +34,21 @@ table {
   /*color: #19beff;*/
   color: #FF5A19;
 }
+
+a {
+  padding-bottom: 0px
+  text-align: center;
+  font: 20px arial, sans-serif;
+  /*color: #19beff;*/
+  color: #FF5A19;
+  text-decoration: none;
+}
+
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: #19ff5a;
+}
