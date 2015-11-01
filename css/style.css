@@ -1,48 +1,55 @@
 h1 {
-    text-align: center;
-    font: 150px arial, sans-serif;
-    color: #FF5A19;
-    opacity: 0.9;
-    font-weight: 900;
+  text-align: center;
+  font: 150px arial, sans-serif;
+  color: #FF5A19;
+  opacity: 0.9;
+  font-weight: 900;
 }
 h2 {
-    text-align: center;
-    font: 100px arial, sans-serif;
-    color: #19ff5a;
-    opacity: 0.9;
-    font-weight: 600;
+  text-align: center;
+  font: 100px arial, sans-serif;
+  color: #19ff5a;
+  opacity: 0.9;
+  font-weight: 600;
 }
-
 h3 {
   background-color: black;
   opacity: 0.5;
 }
-
 td {
   vertical-align: middle;
   padding-bottom: 0px
 }
-
 table {
-  padding-bottom: 0px
-  text-align: center;
+  padding-bottom: 0px text-align: center;
   font: 20px arial, sans-serif;
   color: #FF5A19;
 }
-
 a {
-  padding-bottom: 0px
-  text-align: center;
+  padding-bottom: 0px text-align: center;
   font: 20px arial, sans-serif;
   font-weight: 900;
   color: #FF5A19;
   text-decoration: none;
 }
-
 a:hover {
-    color: hotpink;
+  color: hotpink;
 }
-
 a:active {
-    color: #19ff5a;
+  color: #19ff5a;
+}
+#social_things {
+  padding-bottom: 0px text-align: center;
+  font: 20px arial, sans-serif;
+  color: #FF5A19;
+  vertical-align: middle;
+  padding-bottom: 0px
+}
+#Dates {
+  padding-bottom: 0px text-align: center;
+  font: 20px arial, sans-serif;
+  color: #FF5A19;
+  vertical-align: top;
+  padding-bottom: 0px
+  align: right;
 }

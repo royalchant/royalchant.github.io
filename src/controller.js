@@ -1,3 +1,5 @@
+// TODO: Should be able to read from .txt files
+// enter at own risk
 var text = "Oh my god\n\
 this complicated\n\
 choreography\n\
@@ -584,7 +586,7 @@ and some nights I think it might be you\n\
 [unintelligible mumbling]"
 
 function controller(){
-  var r_text = text.split("\n") //TODO: Should be able to read from .txt files
+  var r_text = text.split("\n")
   var time = 900
   var show_lyric = true
   var toggleLyric = function() {
@@ -595,7 +597,7 @@ function controller(){
     }
   }
   var getDates = function() {
-    // document.getElementById("Dates").innerHTML = 
+    // document.getElementById("Dates").innerHTML =
     var url = 'http://api.songkick.com/api/3.0/artists/{3678791}/calendar.json?apikey={your_api_key}' //TODO: get api key and finish this section
   }
   var updateLyrics = function() {
