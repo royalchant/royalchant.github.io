@@ -581,7 +581,7 @@ and I know it was true\n\
 a weary travellers\n\
 we’re wasted on the shores\n\
 and some nights I think it might be you\n\
-[unintelligible mumbling]\n"
+[unintelligible mumbling]"
 
 function init(){
   var r_text = text.split("\n")
