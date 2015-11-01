@@ -1,17 +1,13 @@
 h1 {
     text-align: center;
     font: 150px arial, sans-serif;
-    /*color: #19beff;*/
     color: #FF5A19;
     opacity: 0.9;
     font-weight: 900;
 }
-/*http://stackoverflow.com/questions/8738072/forcing-web-site-to-show-in-landscape-mode-only*/
 h2 {
-    /*width: 50%;*/
     text-align: center;
     font: 100px arial, sans-serif;
-    /*color: #FF5A19;*/
     color: #19ff5a;
     opacity: 0.9;
     font-weight: 600;
@@ -31,7 +27,6 @@ table {
   padding-bottom: 0px
   text-align: center;
   font: 20px arial, sans-serif;
-  /*color: #19beff;*/
   color: #FF5A19;
 }
 
@@ -39,7 +34,7 @@ a {
   padding-bottom: 0px
   text-align: center;
   font: 20px arial, sans-serif;
-  /*color: #19beff;*/
+  font-weight: 900;
   color: #FF5A19;
   text-decoration: none;
 }
@@ -48,7 +43,6 @@ a:hover {
     color: hotpink;
 }
 
-/* selected link */
 a:active {
     color: #19ff5a;
 }
