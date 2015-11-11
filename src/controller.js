@@ -596,21 +596,28 @@ function controller(){
       show_lyric = true
     }
   }
-  var getDates = function() {
-    // document.getElementById("Dates").innerHTML =
-    var url = 'http://api.songkick.com/api/3.0/artists/{3678791}/calendar.json?apikey={your_api_key}' //TODO: get api key and finish this section
-  }
   var updateLyrics = function() {
     var i = Math.floor(r_text.length*Math.random())
     document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase()
     setTimeout(updateLyrics, time)
   }
-  getDates();
   if (show_lyric){
     updateLyrics();
   }
 };
 
 $(function() {
+    var url = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
+    $.getJSON(url, function(data){
+      console.log(data.resultsPage.results.event[0].displayName);
+      event_name = data.resultsPage.results.event[0].displayName;
+      venue = data.resultsPage.results.event[0].venue.displayName;
+      date = data.resultsPage.results.event[0].start.date;
+      start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
+      // supports = data.resultsPage.results.event[0].performance.artist.displayName;
+      event_string = "NEXT SHOW:<br>"+ venue + "<br>" + date + " @ " + start_time;
+      console.log("NEXT SHOW:\n"+ event_name + "\n" + venue + "\n" + date + "\n" + start_time)
+      document.getElementById("Dates").innerHTML = event_string.toUpperCase();
+    });
     controller();
 });
