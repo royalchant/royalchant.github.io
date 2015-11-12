@@ -612,10 +612,11 @@ $(function() {
       console.log(data.resultsPage.results.event[0].displayName);
       event_name = data.resultsPage.results.event[0].displayName;
       venue = data.resultsPage.results.event[0].venue.displayName;
+      locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
       date = data.resultsPage.results.event[0].start.date;
       start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
       // supports = data.resultsPage.results.event[0].performance.artist.displayName;
-      event_string = "NEXT SHOW:<br>"+ venue + "<br>" + date + " @ " + start_time;
+      event_string = "NEXT SHOW: " + date + " @ " + start_time + '<br>'+ venue + "<br>" + locale + "<br"+ date + " @ " + start_time;
       console.log("NEXT SHOW:\n"+ event_name + "\n" + venue + "\n" + date + "\n" + start_time)
       document.getElementById("Dates").innerHTML = event_string.toUpperCase();
     });
