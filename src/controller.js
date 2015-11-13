@@ -585,26 +585,26 @@ we’re wasted on the shores\n\
 and some nights I think it might be you\n\
 [unintelligible mumbling]"
 
-function controller(){
-  var r_text = text.split("\n")
-  var time = 900
-  var show_lyric = true
-  var toggleLyric = function() {
-    if (show_lyric) {
-      show_lyric = false
-    } else {
-      show_lyric = true
-    }
+var r_text = text.split("\n");
+var time = 900;
+var show_lyric = true
+
+var toggleLyric = function() {
+  console.log("you clicked it");
+  if (show_lyric) {
+    show_lyric = false;
+  } else {
+    show_lyric = true;
   }
-  var updateLyrics = function() {
-    var i = Math.floor(r_text.length*Math.random())
-    document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase()
-    setTimeout(updateLyrics, time)
+}
+
+var updateLyrics = function() {
+  var i = Math.floor(r_text.length*Math.random());
+  if (show_lyric) {
+    document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase();
   }
-  if (show_lyric){
-    updateLyrics();
-  }
-};
+  setTimeout(updateLyrics, time);
+}
 
 $(function() {
     var url = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
@@ -618,12 +618,11 @@ $(function() {
         start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
         // supports = data.resultsPage.results.event[0].performance.artist.displayName;
         event_string = "NEXT SHOW: " + date + " @ " + start_time + '<br>'+ venue + "<br>" + locale + "<br"+ date + " @ " + start_time;
-        console.log("NEXT SHOW:\n"+ event_name + "\n" + venue + "\n" + date + "\n" + start_time)
+        console.log("NEXT SHOW:\n"+ event_name + "\n" + venue + "\n" + date + "\n" + start_time);
       } else {
-        event_string = " "
+        event_string = " ";
       }
-
       document.getElementById("Dates").innerHTML = event_string.toUpperCase();
     });
-    controller();
+    updateLyrics();
 });
