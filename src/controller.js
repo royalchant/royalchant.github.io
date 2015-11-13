@@ -585,45 +585,62 @@ we’re wasted on the shores\n\
 and some nights I think it might be you\n\
 [unintelligible mumbling]"
 
-function controller(){
-  var r_text = text.split("\n")
-  var time = 900
-  var show_lyric = true
-  var toggleLyric = function() {
-    if (show_lyric) {
-      show_lyric = false
-    } else {
-      show_lyric = true
+var social = '<a href="http://facebook.com/royalchant"><img border="0" alt="Facebook" src="icon/Facebook.png" width="48" height="48" align="middle"></a> <a href="http://twitter.com/royalchant"><img border="0" alt="Twitter" src="icon/Twitter.png" width="48" height="40" align="middle"></a> <a href="https://play.spotify.com/artist/4ALhCzvDONaEUbRQ9A10Vc"><img border="0" alt="Spotify" src="icon/Spotify.png" width="48" height="48" align="middle"></a><a href="https://www.youtube.com/user/RoyalChant"><img border="0" alt="Youtube" src="icon/Youtube.png" width="48" height="34" align="middle"></a> <a href="http://dirtymabrecords.com/"><img border="0" alt="Tumblr" src="icon/Tumblr.png" width="27" height="48" align="middle"></a> <a href="https://soundcloud.com/royalchant"><img border="0" alt="Soundcloud" src="icon/Soundcloud.png" width="48" height="27" align="middle"></a> <a href="https://instagram.com/royalchantau/"><img border="0" alt="Instagram" src="icon/Instagram.png" width="48" height="48" align="middle"></a> <a href="http://royalchant.bandcamp.com"><img border="0" alt="Bandcamp" src="icon/Bandcamp.png" width="48" height="48" align="middle"></a> <a href="https://slantrhyme.wordpress.com/"><img border="0" alt="Wordpress" src="icon/Wordpress.png" width="48" height="48" align="middle"></a>'
+var style1 = '{margin: 0;padding: 0;}html {background: url("img/bg1.jpg") no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}'
+var style2 = '{margin: 0;padding: 0;}html {background: url("img/bg1.jpg") no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}'
+
+
+var r_text = text.split("\n");
+var time = 900;
+var show_lyric = true;
+var style_first_run = true;
+
+var toggleLyric = function() {
+  console.log("dont click the button");
+  if (show_lyric) {
+    show_lyric = false;
+    document.getElementById("Video").innerHTML = '<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A" frameborder="0" allowfullscreen></iframe>'
+    document.getElementById("Lyric").innerHTML = '';
+  } else {
+    show_lyric = true;
+    document.getElementById("Video").innerHTML = '';
+    if (style_first_run) {
+      document.getElementById("Style").innerHTML = style2;
+      style_first_run = false;
     }
   }
-  var updateLyrics = function() {
-    var i = Math.floor(r_text.length*Math.random())
-    document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase()
-    setTimeout(updateLyrics, time)
+}
+
+var updateLyrics = function() {
+  var i = Math.floor(r_text.length*Math.random());
+  if (show_lyric) {
+    document.getElementById("Lyric").innerHTML = r_text[i].toUpperCase();
   }
-  if (show_lyric){
-    updateLyrics();
-  }
-};
+  console.log(r_text[i].toUpperCase());
+  setTimeout(updateLyrics, time);
+}
 
 $(function() {
-    var url = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
-    $.getJSON(url, function(data){
-      if (data.resultsPage.status == "ok") {
-        console.log(data.resultsPage.results.event[0].displayName);
-        event_name = data.resultsPage.results.event[0].displayName;
-        venue = data.resultsPage.results.event[0].venue.displayName;
-        locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
-        date = data.resultsPage.results.event[0].start.date;
-        start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
-        // supports = data.resultsPage.results.event[0].performance.artist.displayName;
-        event_string = "NEXT SHOW: " + date + " @ " + start_time + '<br>'+ venue + "<br>" + locale + "<br"+ date + " @ " + start_time;
-        console.log("NEXT SHOW:\n"+ event_name + "\n" + venue + "\n" + date + "\n" + start_time)
-      } else {
-        event_string = " "
-      }
-
-      document.getElementById("Dates").innerHTML = event_string.toUpperCase();
-    });
-    controller();
+  // Build Page
+  document.getElementById("social_things").innerHTML = social
+  document.getElementById("Style").innerHTML = style1;
+  // Song Kick API Request
+  var url = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
+  $.getJSON(url, function(data){
+  if (data.resultsPage.status == "ok") {
+      console.log(data.resultsPage.results.event[0].displayName);
+      event_name = data.resultsPage.results.event[0].displayName;
+      venue = data.resultsPage.results.event[0].venue.displayName;
+      locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
+      date = data.resultsPage.results.event[0].start.date;
+      start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
+      // supports = data.resultsPage.results.event[0].performance.artist.displayName;
+      event_string = "NEXT SHOW: " + date + " @ " + start_time + '<br>'+ venue + "<br>" + locale + "<br"+ date + " @ " + start_time;
+      console.log("NEXT SHOW:\n"+ event_name + "\n" + venue + "\n" + date + "\n" + start_time);
+    } else {
+      event_string = " ";
+    }
+    document.getElementById("Dates").innerHTML = event_string.toUpperCase();
+  });
+  updateLyrics();
 });
