@@ -587,27 +587,29 @@ and some nights I think it might be you\n\
 
 var social = '<a href="http://facebook.com/royalchant"><img border="0" alt="Facebook" src="icon/Facebook.png" width="48" height="48" align="middle"></a> <a href="http://twitter.com/royalchant"><img border="0" alt="Twitter" src="icon/Twitter.png" width="48" height="40" align="middle"></a> <a href="https://play.spotify.com/artist/4ALhCzvDONaEUbRQ9A10Vc"><img border="0" alt="Spotify" src="icon/Spotify.png" width="48" height="48" align="middle"></a><a href="https://www.youtube.com/user/RoyalChant"><img border="0" alt="Youtube" src="icon/Youtube.png" width="48" height="34" align="middle"></a> <a href="http://dirtymabrecords.com/"><img border="0" alt="Tumblr" src="icon/Tumblr.png" width="27" height="48" align="middle"></a> <a href="https://soundcloud.com/royalchant"><img border="0" alt="Soundcloud" src="icon/Soundcloud.png" width="48" height="27" align="middle"></a> <a href="https://instagram.com/royalchantau/"><img border="0" alt="Instagram" src="icon/Instagram.png" width="48" height="48" align="middle"></a> <a href="http://royalchant.bandcamp.com"><img border="0" alt="Bandcamp" src="icon/Bandcamp.png" width="48" height="48" align="middle"></a> <a href="https://slantrhyme.wordpress.com/"><img border="0" alt="Wordpress" src="icon/Wordpress.png" width="48" height="48" align="middle"></a>'
 var style1 = '{margin: 0;padding: 0;}html {background: url("img/bg1.jpg") no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}'
-var style2 = '{margin: 0;padding: 0;}html {background: url("img/bg1.jpg") no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}'
+var style2 = '{margin: 0;padding: 0;}html {background: url("img/bg2.jpg") no-repeat center center fixed;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;}'
 
+var videos = ['<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/gIP8jcGemAY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/LqzCiWWRDJM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/5yAnjgAlxhM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/G_pZGP4jCT4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/HV4KfzoXuKs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/eH64-BUA4_E?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/QvQLmaOj7z4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>']
 
 var r_text = text.split("\n");
 var time = 900;
 var show_lyric = true;
-var style_first_run = true;
+var first_run = true;
 
 var toggleLyric = function() {
   console.log("dont click the button");
   if (show_lyric) {
     show_lyric = false;
-    document.getElementById("Video").innerHTML = '<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A" frameborder="0" allowfullscreen></iframe>'
+    if (first_run) {
+    	document.getElementById("Video").innerHTML = '<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>'
+     	first_run = false;
+    } else {
+    	document.getElementById("Video").innerHTML = videos[Math.floor(videos.length*Math.random())]
+    }
     document.getElementById("Lyric").innerHTML = '';
   } else {
     show_lyric = true;
     document.getElementById("Video").innerHTML = '';
-    if (style_first_run) {
-      document.getElementById("Style").innerHTML = style2;
-      style_first_run = false;
-    }
   }
 }
 
