@@ -13,6 +13,7 @@ h1 {
   opacity: 0.9;
   font-weight: 900;
   cursor:default;
+  line-height: 30%;
 }
 h2 {
   text-align: center;
