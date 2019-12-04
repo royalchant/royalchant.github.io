@@ -1,7 +1,8 @@
 var colors = ['#0f0', '#ff0', '#0ff', '#f0f'];
 var songkick = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H'
 var songkickData;
-var event_string;
+var eventString;
+var bgImages = [];
 
 function rcol() {
   return colors[(int(random(colors.length)))];
@@ -15,9 +16,13 @@ function randint(x) {
   return (random(x));
 }
 
-
 function preload(){
   songkickData = loadJSON(songkick);
+  for (let i = 1; i <= 12; i++) {
+    let newString = 'img/img_' + i + '.jpg';
+    console.log(newString);
+    bgImages.push(loadImage(newString));
+  }
 }
 
 
@@ -34,13 +39,19 @@ function setup() {
     let locale = songkickData.resultsPage.results.event[0].venue.metroArea.displayName;
     let date = songkickData.resultsPage.results.event[0].start.date;
     let start_time = songkickData.resultsPage.results.event[0].start.time.substring(0, 5);
-    event_string = "NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale;
-    console.log(event_string);
+    eventString = "NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale;
+    console.log(eventString);
   }
 }
-
+let i = 0;
+let j = 0;
 function draw() {
+  if (i%10000 == 0) {
+    j++
+    j = j%12;
+  }
   clear();
   background(colors[0]);
-  text(event_string, mouseX, mouseY);
+  image(bgImages[j],0,0);
+  text(eventString, mouseX, mouseY);
 }
