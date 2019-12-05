@@ -66,7 +66,7 @@ function draw() {
   fill(rcRed);
   stroke(rcWhite);
   strokeWeight(5);
-  textSize(50)
+  textSize(40)
   textFont('Montserrat');
   text("ROYAL CHANT", 10, 50);
   textSize(15)
