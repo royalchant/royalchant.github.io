@@ -26,6 +26,8 @@ function preload(){
     console.log(newString);
     bgImages.push(loadImage(newString));
   }
+  textFont('Montserrat');
+  textFont('Lato');
 }
 
 function init() {
@@ -50,7 +52,8 @@ function setup() {
     let locale = songkickData.resultsPage.results.event[0].venue.metroArea.displayName.toUpperCase();
     let date = songkickData.resultsPage.results.event[0].start.date.toUpperCase();
     let start_time = songkickData.resultsPage.results.event[0].start.time.substring(0, 5).toUpperCase();
-    eventString = "NEXT SHOW:\n"  + venue + " " + locale + '\n' + date + " @ " + start_time;
+    // eventString = "NEXT SHOW:\n"  + venue + " " + locale + '\n' + date + " @ " + start_time;
+    eventString = venue + "\n" + locale + "\n" + date + "\n" + start_time;
     console.log(eventString);
   }
 }
@@ -65,14 +68,14 @@ function draw() {
   fill(rcRed);
   stroke(rcWhite);
   strokeWeight(5);
-  textSize(100)
+  textSize(50)
   textFont('Montserrat');
-  text("ROYAL CHANT", 10, 80);
-  textSize(30)
+  text("ROYAL CHANT", 10, 50);
+  textSize(15)
   fill(rcWhite);
   noStroke();
   textFont('Lato');
-  text(eventString, 14, 110);
+  text(eventString, 10, 80);
 }
 
 window.onresize = function() {
