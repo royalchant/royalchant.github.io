@@ -26,8 +26,6 @@ function preload(){
     console.log(newString);
     bgImages.push(loadImage(newString));
   }
-  textFont('Montserrat');
-  textFont('Lato');
 }
 
 function init() {
@@ -52,8 +50,8 @@ function setup() {
     let locale = songkickData.resultsPage.results.event[0].venue.metroArea.displayName.toUpperCase();
     let date = songkickData.resultsPage.results.event[0].start.date.toUpperCase();
     let start_time = songkickData.resultsPage.results.event[0].start.time.substring(0, 5).toUpperCase();
-    // eventString = "NEXT SHOW:\n"  + venue + " " + locale + '\n' + date + " @ " + start_time;
-    eventString = venue + "\n" + locale + "\n" + date + "\n" + start_time;
+    eventString = venue + " " + locale + ' - ' + date + " @ " + start_time;
+    // eventString = venue + "\n" + locale + "\n" + date + "\n" + start_time;
     console.log(eventString);
   }
 }
