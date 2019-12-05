@@ -3,6 +3,9 @@ var songkick = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?ap
 var songkickData;
 var eventString;
 var bgImages = [];
+var rcRed = [150, 0, 0];
+var rcWhite = [150, 150, 150];
+let imageIndex = 0;
 
 function rcol() {
   return colors[(int(random(colors.length)))];
@@ -25,33 +28,65 @@ function preload(){
   }
 }
 
-
-function setup() {
-  canvas = createCanvas(window.innerWidth, window.innerHeight);
+function init() {
   smooth(8);
   pixelDensity(2);
-  // background(rcol());
-  background(colors[0]);
+  background(0);
+  fill(rcRed);
+  stroke(rcWhite);
+
+  imageMode(CENTER);
+  image(bgImages[imageIndex],width/2,height/2);
+}
+
+
+function setup() {
+  init();
+  canvas = createCanvas(window.innerWidth, window.innerHeight);
   console.log('stop looking at me. do you want to do this instead? the page is public on github, send me a pull request');
   if (songkickData.resultsPage.status == "ok") {
-    let event_name = songkickData.resultsPage.results.event[0].displayName;
-    let venue = songkickData.resultsPage.results.event[0].venue.displayName;
-    let locale = songkickData.resultsPage.results.event[0].venue.metroArea.displayName;
-    let date = songkickData.resultsPage.results.event[0].start.date;
-    let start_time = songkickData.resultsPage.results.event[0].start.time.substring(0, 5);
-    eventString = "NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale;
+    let event_name = songkickData.resultsPage.results.event[0].displayName.toUpperCase();
+    let venue = songkickData.resultsPage.results.event[0].venue.displayName.toUpperCase();
+    let locale = songkickData.resultsPage.results.event[0].venue.metroArea.displayName.toUpperCase();
+    let date = songkickData.resultsPage.results.event[0].start.date.toUpperCase();
+    let start_time = songkickData.resultsPage.results.event[0].start.time.substring(0, 5).toUpperCase();
+    eventString = "NEXT SHOW:\n"  + venue + " " + locale + '\n' + date + " @ " + start_time;
     console.log(eventString);
   }
 }
-let i = 0;
-let j = 0;
+
+
 function draw() {
-  if (i%10000 == 0) {
-    j++
-    j = j%12;
-  }
-  clear();
-  background(colors[0]);
-  image(bgImages[j],0,0);
-  text(eventString, mouseX, mouseY);
+  frameRate(1);
+  imageIndex++
+  imageIndex = imageIndex%12;
+  background(0);
+  image(bgImages[imageIndex],width/2,height/2);
+  fill(rcRed);
+  stroke(rcWhite);
+  strokeWeight(5);
+  textSize(100)
+  textFont('Montserrat');
+  text("ROYAL CHANT", 10, 80);
+  textSize(30)
+  fill(rcWhite);
+  noStroke();
+  textFont('Lato');
+  text(eventString, 14, 110);
+}
+
+window.onresize = function() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas = null;
+  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  init();
+  draw();
+};
+
+function deviceTurned() {
+  canvas = null;
+  canvas = createCanvas(window.innerWidth, window.innerHeight);
+  init();
+  draw();
 }
