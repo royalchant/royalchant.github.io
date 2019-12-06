@@ -1,22 +1,16 @@
-var colors = ['#0f0', '#ff0', '#0ff', '#f0f'];
-var songkick = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H'
-var songkickData;
-var eventString;
-var bgImages = [];
-var rcRed = [150, 0, 0];
-var rcWhite = [150, 150, 150];
-let imageIndex = 0;
+let songkick = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H'
+let songkickData;
+let eventString;
+let bgImages = [];
+let rcRed = [150, 0, 0];
+let rcWhite = [150, 150, 150];
+let imageIndex = 1;
+let prevImageIndex = 0;
+let alpha = 0;
+let line;
 
-function rcol() {
-  return colors[(int(random(colors.length)))];
-};
-
-function coin() {
-  return random(1) > .5;
-}
-
-function randint(x) {
-  return (random(x));
+function randomLine() {
+  return lyrics[int(random(lyrics.length))];
 }
 
 function preload(){
@@ -34,11 +28,10 @@ function init() {
   background(0);
   fill(rcRed);
   stroke(rcWhite);
-
   imageMode(CENTER);
   image(bgImages[imageIndex],width/2,height/2);
+  textAlign(CENTER, CENTER);
 }
-
 
 function setup() {
   init();
@@ -53,27 +46,48 @@ function setup() {
     eventString = venue + " " + locale + ' - ' + date + " @ " + start_time;
     // eventString = venue + "\n" + locale + "\n" + date + "\n" + start_time;
     console.log(eventString);
+    prevImageIndex = int(random(bgImages.length));
+    while (imageIndex == prevImageIndex){
+      imageIndex = int(random(bgImages.length));
+    }
   }
+  line = randomLine();
 }
 
 
+
 function draw() {
-  frameRate(1);
-  imageIndex++
-  imageIndex = imageIndex%12;
+  alpha++;
+  // imageIndex++
+  // imageIndex = imageIndex%12;
+  console.log(randomLine());
   background(0);
+  tint(255, 255);
+  image(bgImages[prevImageIndex],width/2,height/2);
+  tint(255, alpha);
   image(bgImages[imageIndex],width/2,height/2);
+  if (alpha >= 255) {
+    alpha = 0;
+    prevImageIndex = imageIndex;
+    while (imageIndex == prevImageIndex){
+      imageIndex = int(random(bgImages.length));
+    }
+  }
+  if (alpha%10 == 0) {
+    line = randomLine();
+  }
   fill(rcRed);
   stroke(rcWhite);
   strokeWeight(5);
   textSize(40)
   textFont('Montserrat');
-  text("ROYAL CHANT", 10, 50);
+  text("ROYAL CHANT", width/2, 50);
+  text(line.toUpperCase(), width/2, height/2);
   textSize(15)
   fill(rcWhite);
   noStroke();
   textFont('Lato');
-  text(eventString, 10, 80);
+  text(eventString, width/2, 80);
 }
 
 window.onresize = function() {
