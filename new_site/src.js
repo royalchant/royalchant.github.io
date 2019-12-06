@@ -30,7 +30,6 @@ function init() {
   stroke(rcWhite);
   imageMode(CENTER);
   image(bgImages[imageIndex],width/2,height/2);
-  textAlign(CENTER, CENTER);
 }
 
 function setup() {
@@ -81,13 +80,16 @@ function draw() {
   strokeWeight(5);
   textSize(40)
   textFont('Montserrat');
-  text("ROYAL CHANT", width/2, 50);
+  textAlign(LEFT);
+  text("ROYAL CHANT", 10, 50);
+  textAlign(CENTER, CENTER);
   text(line.toUpperCase(), width/2, height/2);
   textSize(15)
   fill(rcWhite);
   noStroke();
   textFont('Lato');
-  text(eventString, width/2, 80);
+  textAlign(LEFT);
+  text(eventString, 10, 80);
 }
 
 window.onresize = function() {
