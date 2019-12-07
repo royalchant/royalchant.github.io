@@ -47,9 +47,6 @@ function preload(){
   socials.push(loadImage('icon/Twitter.png'));
   socials.push(loadImage('icon/Wordpress.png'));
   socials.push(loadImage('icon/Youtube.png'));
-  for (let i = 0; i < socials.length; i++){
-    socials[i].resize(27, 27);
-  }
 }
 
 function init() {
@@ -139,8 +136,10 @@ function draw() {
   fill(rcWhite);
   tint(255, 100);
   text(eventString, 10, titleTextSize + gigTextSize/2);
+  let socialHeight = height-(socials[0].height);
   for (let i = 0; i < socials.length; i++){
-    image(socials[i], 29 + 60*i, height-(1.5*socials[i].height));
+    socials[i].resize(27, 27);
+    image(socials[i], 29 + 60*i, socialHeight);
   }
 }
 
