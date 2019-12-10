@@ -22,7 +22,9 @@ let tumblr = 5;
 let twitter = 6;
 let wordpress = 7;
 let youtube = 8;
-let socials = [];
+let socialIcons = [];
+let socialButtons = [];
+let socialLinks = [];
 let portrait = false;
 let thisImage;
 let prevImage;
@@ -35,18 +37,27 @@ function preload(){
   songkickData = loadJSON(songkick);
   for (let i = 1; i <= 12; i++) {
     let newString = 'img/img_' + i + '.jpg';
-    console.log(newString);
     bgImages.push(loadImage(newString));
   }
-  socials.push(loadImage('icon/Bandcamp.png'));
-  socials.push(loadImage('icon/Facebook.png'));
-  socials.push(loadImage('icon/Instagram.png'));
-  socials.push(loadImage('icon/Soundcloud.png'));
-  socials.push(loadImage('icon/Spotify.png'));
-  socials.push(loadImage('icon/Tumblr.png'));
-  socials.push(loadImage('icon/Twitter.png'));
-  socials.push(loadImage('icon/Wordpress.png'));
-  socials.push(loadImage('icon/Youtube.png'));
+  socialIcons.push(loadImage('icon/Bandcamp.png'));
+  socialIcons.push(loadImage('icon/Facebook.png'));
+  socialIcons.push(loadImage('icon/Instagram.png'));
+  socialIcons.push(loadImage('icon/Soundcloud.png'));
+  socialIcons.push(loadImage('icon/Spotify.png'));
+  socialIcons.push(loadImage('icon/Tumblr.png'));
+  socialIcons.push(loadImage('icon/Twitter.png'));
+  socialIcons.push(loadImage('icon/Wordpress.png'));
+  socialIcons.push(loadImage('icon/Youtube.png'));
+
+  socialLinks.push(("https://royalchant.bandcamp.com"));
+  socialLinks.push(("https://facebook.com/royalchant"));
+  socialLinks.push(("https://instagram.com/royalchantau/"));
+  socialLinks.push(("https://soundcloud.com/royalchant"));
+  socialLinks.push(("https://play.spotify.com/artist/4ALhCzvDONaEUbRQ9A10Vc"));
+  socialLinks.push(("http://dirtymabrecords.com/"));
+  socialLinks.push(("https://twitter.com/royalchant"));
+  socialLinks.push(("https://slantrhyme.wordpress.com/"));
+  socialLinks.push(("https://www.youtube.com/user/RoyalChant"));
 }
 
 function init() {
@@ -65,6 +76,15 @@ function init() {
     portrait = true;
   } else {
     portrait = false;
+  }
+  let socialHeight = height-(socialIcons[0].height);
+  for (let i = 0; i < socialIcons.length; i++){
+    let dim = 48;
+    x = 29 + 60*i;
+
+    let dims = [x-dim/2, x+dim/2, socialHeight-dim/2, socialHeight+dim/2];
+    socialButtons[i] = dims;
+    image(socialIcons[i], x, socialHeight);
   }
 }
 
@@ -136,10 +156,20 @@ function draw() {
   fill(rcWhite);
   tint(255, 100);
   text(eventString, 10, titleTextSize + gigTextSize/2);
-  let socialHeight = height-(socials[0].height);
-  for (let i = 0; i < socials.length; i++){
-    socials[i].resize(27, 27);
-    image(socials[i], 29 + 60*i, socialHeight);
+  let socialHeight = height-(socialIcons[0].height);
+  for (let i = 0; i < socialIcons.length; i++){
+    //change init if you change ;-)
+    image(socialIcons[i], 29 + 60*i, socialHeight);
+  }
+}
+
+function touchStarted() {
+let x = mouseX;
+let y = mouseY;
+  for (let i = 0; i < socialButtons.length; i++) {
+    if ((x >= socialButtons[i][0])&&(x <= socialButtons[i][1])&&(y >= socialButtons[i][2])&&(y <= socialButtons[i][3])){
+      window.location.href = socialLinks[i];
+    }
   }
 }
 
