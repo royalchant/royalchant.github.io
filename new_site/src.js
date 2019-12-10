@@ -1,4 +1,4 @@
-let songkick = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H'
+let songkick = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H'
 let songkickData;
 let eventString;
 let bgImages = [];
