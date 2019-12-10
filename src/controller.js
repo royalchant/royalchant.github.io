@@ -605,7 +605,7 @@ var toggleLyric = function() {
   if (show_lyric) {
     show_lyric = false;
     if (first_run) {
-      document.getElementById("Video").innerHTML = '<iframe width="853" height="480" src="https://www.youtube.com/embed/buxlfEqlQ2I" frameborder="0" allowfullscreen></iframe>' 
+      document.getElementById("Video").innerHTML = '<iframe width="853" height="480" src="https://www.youtube.com/embed/buxlfEqlQ2I" frameborder="0" allowfullscreen></iframe>'
      	first_run = false;
     } else {
     	document.getElementById("Video").innerHTML = videos[Math.floor(videos.length*Math.random())]
@@ -631,7 +631,7 @@ $(function() {
   document.getElementById("social_things").innerHTML = social
   document.getElementById("Style").innerHTML = style1;
   // Song Kick API Request
-  var url = 'http://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
+  var url = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
   $.getJSON(url, function(data){
   if (data.resultsPage.status == "ok") {
       console.log(data.resultsPage.results.event[0].displayName);
