@@ -5,7 +5,8 @@ body {
 }
 
 /* add */ p { font-family: 'Montserrat', sans-serif;
-              font-family: 'Lato', sans-serif;}
+              font-family: 'Lato', sans-serif;
+              font-family: 'Amatic SC', cursive;}
 
 canvas {
   display: block;

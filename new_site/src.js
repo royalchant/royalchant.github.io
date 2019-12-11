@@ -28,6 +28,8 @@ let socialLinks = [];
 let portrait = false;
 let thisImage;
 let prevImage;
+let resizedFlag = false;
+let socialHeight;
 
 function randomLine() {
   return lyrics[int(random(lyrics.length))];
@@ -61,8 +63,8 @@ function preload(){
 }
 
 function init() {
-  smooth(8);
-  pixelDensity(2);
+  smooth();
+  // pixelDensity(8);
   background(0);
   fill(rcRed);
   stroke(rcWhite);
@@ -77,7 +79,7 @@ function init() {
   } else {
     portrait = false;
   }
-  let socialHeight = height-(socialIcons[0].height);
+  socialHeight = height-(socialIcons[0].height);
   for (let i = 0; i < socialIcons.length; i++){
     let dim = 48;
     x = 29 + 60*i;
@@ -89,6 +91,7 @@ function init() {
 }
 
 function setup() {
+  smooth();
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   console.log('stop looking at me. do you want to do this instead? the page is public on github, send me a pull request');
   if (songkickData.resultsPage.status == "ok") {
@@ -106,12 +109,13 @@ function setup() {
     prevImage = bgImages[prevImageIndex];
   }
   line = randomLine();
-  lyricTextSize = int((window.innerWidth/1.5)/line.length);
+
   init();
 }
 
 function draw() {
-  alpha++;
+  frameRate(5);
+  alpha+=3;
   background(0);
   tint(255, 255);
   image(prevImage,width/2,height/2);
@@ -120,22 +124,33 @@ function draw() {
   if (alpha >= 255) {
     alpha = 0;
     prevImageIndex = imageIndex;
+    prevImage = thisImage;
     while (imageIndex == prevImageIndex){
       imageIndex = int(random(bgImages.length));
       thisImage = bgImages[imageIndex];
-      prevImage = bgImages[prevImageIndex];
-      if (portrait == true) {
-        thisImage.resize(0, (window.innerHeight+10));
-        prevImage.resize(0, (window.innerHeight+10));
-      } else {
-        thisImage.resize((window.innerWidth+10.0), 0);
-        prevImage.resize((window.innerWidth+10.0), 0);
-      }
     }
+    if (portrait == true) {
+      thisImage.resize(0, (window.innerHeight+10));
+      // prevImage.resize(0, (window.innerHeight+10));
+    } else {
+      thisImage.resize((window.innerWidth+10.0), 0);
+      // prevImage.resize((window.innerWidth+10.0), 0);
+    }
+  }
+  if (resizedFlag == true){
+    lyricTextSize = int((window.innerWidth)/line.length);
+    if (portrait == true) {
+      thisImage.resize(0, (window.innerHeight+10));
+      prevImage.resize(0, (window.innerHeight+10));
+    } else {
+      thisImage.resize((window.innerWidth+10.0), 0);
+      prevImage.resize((window.innerWidth+10.0), 0);
+    }
+    resizedFlag = false;
   }
   if (alpha%10 == 0) {
     line = randomLine();
-    lyricTextSize = int((window.innerWidth/1.5)/line.length);
+    lyricTextSize = int((1.5*window.innerWidth)/line.length);
   }
   fill(rcRed);
   stroke(rcWhite);
@@ -146,17 +161,19 @@ function draw() {
   text("ROYAL CHANT", 10, titleTextSize/2);
   textFont('Lato');
   textAlign(CENTER, CENTER);
-  stroke(rcWhiteTrans)
-  fill(rcRedTrans);
+  strokeWeight(2);
+  fill(rcRed);
+  // textFont('Amatic SC');
+  textFont('Lato');
   textSize(lyricTextSize);
   text(line.toUpperCase(), width/2, height/2);
   textAlign(LEFT);
   noStroke();
+  textFont('Lato');
   textSize(gigTextSize);
   fill(rcWhite);
-  tint(255, 100);
+  tint(255, 255);
   text(eventString, 10, titleTextSize + gigTextSize/2);
-  let socialHeight = height-(socialIcons[0].height);
   for (let i = 0; i < socialIcons.length; i++){
     //change init if you change ;-)
     image(socialIcons[i], 29 + 60*i, socialHeight);
@@ -178,6 +195,7 @@ window.onresize = function() {
   height = window.innerHeight;
   canvas = null;
   canvas = createCanvas(window.innerWidth, window.innerHeight);
+  resizedFlag = true;
   init();
   draw();
 };
