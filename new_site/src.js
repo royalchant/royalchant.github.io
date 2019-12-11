@@ -76,14 +76,23 @@ function init() {
   if (gigTextSize > 20) {gigTextSize=20;}
   if (window.innerWidth < window.innerHeight) {
     portrait = true;
+    console.log('portrait');
   } else {
     portrait = false;
+    console.log('landscape');
+  }
+  if (thisImage.width < window.innerWidth) {
+      thisImage.resize((window.innerWidth+10.0), 0);
+      prevImage.resize((window.innerWidth+10.0), 0);
+  }
+  if (thisImage.height < window.innerHeight) {
+    thisImage.resize(0, (window.innerHeight+10));
+    prevImage.resize(0, (window.innerHeight+10));
   }
   socialHeight = height-(socialIcons[0].height);
   for (let i = 0; i < socialIcons.length; i++){
     let dim = 48;
     x = 29 + 60*i;
-
     let dims = [x-dim/2, x+dim/2, socialHeight-dim/2, socialHeight+dim/2];
     socialButtons[i] = dims;
     image(socialIcons[i], x, socialHeight);
@@ -94,6 +103,12 @@ function setup() {
   smooth();
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   console.log('stop looking at me. do you want to do this instead? the page is public on github, send me a pull request');
+  console.log(window.innerWidth, window.innerHeight)
+  if (window.innerWidth < window.innerHeight) {
+    portrait = true;
+  } else {
+    portrait = false;
+  }
   if (songkickData.resultsPage.status == "ok") {
     let event_name = songkickData.resultsPage.results.event[0].displayName.toUpperCase();
     let venue = songkickData.resultsPage.results.event[0].venue.displayName.toUpperCase();
@@ -107,6 +122,7 @@ function setup() {
     }
     thisImage = bgImages[imageIndex];
     prevImage = bgImages[prevImageIndex];
+
   }
   line = randomLine();
 
@@ -139,12 +155,13 @@ function draw() {
   }
   if (resizedFlag == true){
     lyricTextSize = int((window.innerWidth)/line.length);
-    if (portrait == true) {
+    if (thisImage.width < window.innerWidth) {
+        thisImage.resize((window.innerWidth+10.0), 0);
+        prevImage.resize((window.innerWidth+10.0), 0);
+    }
+    if (thisImage.height < window.innerHeight) {
       thisImage.resize(0, (window.innerHeight+10));
       prevImage.resize(0, (window.innerHeight+10));
-    } else {
-      thisImage.resize((window.innerWidth+10.0), 0);
-      prevImage.resize((window.innerWidth+10.0), 0);
     }
     resizedFlag = false;
   }
@@ -197,7 +214,12 @@ window.onresize = function() {
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   resizedFlag = true;
   init();
-  draw();
+  console.log(window.innerWidth, window.innerHeight)
+  if (window.innerWidth < window.innerHeight) {
+    portrait = true;
+  } else {
+    portrait = false;
+  }
 };
 
 // function deviceTurned() {
