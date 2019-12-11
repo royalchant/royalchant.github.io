@@ -30,6 +30,7 @@ let thisImage;
 let prevImage;
 let resizedFlag = false;
 let socialHeight;
+let socialWidth;
 
 function randomLine() {
   return lyrics[int(random(lyrics.length))];
@@ -90,9 +91,10 @@ function init() {
     prevImage.resize(0, (window.innerHeight+10));
   }
   socialHeight = height-(socialIcons[0].height);
+  socialWidth = width/(socialIcons[0].height);
   for (let i = 0; i < socialIcons.length; i++){
     let dim = 48;
-    x = 29 + 60*i;
+    x = 29 + 40*i;
     let dims = [x-dim/2, x+dim/2, socialHeight-dim/2, socialHeight+dim/2];
     socialButtons[i] = dims;
     image(socialIcons[i], x, socialHeight);
@@ -145,12 +147,13 @@ function draw() {
       imageIndex = int(random(bgImages.length));
       thisImage = bgImages[imageIndex];
     }
-    if (portrait == true) {
+    if (thisImage.width < window.innerWidth) {
+        thisImage.resize((window.innerWidth+10.0), 0);
+        // prevImage.resize((window.innerWidth+10.0), 0);
+    }
+    if (thisImage.height < window.innerHeight) {
       thisImage.resize(0, (window.innerHeight+10));
       // prevImage.resize(0, (window.innerHeight+10));
-    } else {
-      thisImage.resize((window.innerWidth+10.0), 0);
-      // prevImage.resize((window.innerWidth+10.0), 0);
     }
   }
   if (resizedFlag == true){
@@ -193,7 +196,7 @@ function draw() {
   text(eventString, 10, titleTextSize + gigTextSize/2);
   for (let i = 0; i < socialIcons.length; i++){
     //change init if you change ;-)
-    image(socialIcons[i], 29 + 60*i, socialHeight);
+    image(socialIcons[i], 29 + 40*i, socialHeight);
   }
 }
 
