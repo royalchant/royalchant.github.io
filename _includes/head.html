@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Royal Chant | Garage/Rock/Alt/Indie Mark + Wade: guitars drums koalas bass baritone guitar kittens tambourine cowbell keyboard pandeiro tin whistle spoons tap dancing jazz running spirit fingers golf clap</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Royal Chant" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Garage/Rock/Alt/Indie Mark + Wade: guitars drums koalas bass baritone guitar kittens tambourine cowbell keyboard pandeiro tin whistle spoons tap dancing jazz running spirit fingers golf clap" />
+<meta property="og:description" content="Garage/Rock/Alt/Indie Mark + Wade: guitars drums koalas bass baritone guitar kittens tambourine cowbell keyboard pandeiro tin whistle spoons tap dancing jazz running spirit fingers golf clap" />
+<link rel="canonical" href="https://royalchant.com/" />
+<meta property="og:url" content="https://royalchant.com/" />
+<meta property="og:site_name" content="Royal Chant" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Royal Chant" />
+<script type="application/ld+json">
+{"headline":"Royal Chant","url":"https://royalchant.com/","name":"Royal Chant","description":"Garage/Rock/Alt/Indie Mark + Wade: guitars drums koalas bass baritone guitar kittens tambourine cowbell keyboard pandeiro tin whistle spoons tap dancing jazz running spirit fingers golf clap","@type":"WebSite","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://royalchant.com/feed.xml" title="Royal Chant" />
+<script src="https://code.jquery.com/jquery-1.4.min.js" type="text/javascript"></script>
+  <title>
+    {% if page.title == "Home" %}
+      {{ site.title }} &middot; {{ site.tagline }}
+    {% else %}
+      {{ page.title }} &middot; {{ site.title }}
+    {% endif %}
+  </title>
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="{{ site.baseurl }}/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ site.baseurl }}/atom.xml">
+
+  <style>
+    img { max-width: 100%; vertical-align: middle; object-fit: contain; padding:25px 25px 25px 25px}
+  </style>
+	<a href="{{site.url}}" style="text-align:center; display:block;"><img src="{{ site.url }}/img/royalchantlogo.gif" alt="yeh" class="center"></a>
+  <a id="Dates" href='http://www.songkick.com/artists/3678791-royal-chant' style="text-align:center; display:block;"></a>
+  <script>
+  var url = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
+  $.getJSON(url, function(data){
+  event_string = "No dates :-(";
+  if (data.resultsPage.status == "ok" && data.resultsPage.totalEntries > 0) {
+      console.log(data.resultsPage.results.event[0].displayName);
+      event_name = data.resultsPage.results.event[0].displayName;
+      venue = data.resultsPage.results.event[0].venue.displayName;
+      locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
+      date = data.resultsPage.results.event[0].start.date;
+      start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
+      // supports = data.resultsPage.results.event[0].performance.artist.displayName;
+      event_string = "<br>NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale + " "+ date + " @ " + start_time + "<br><br>";
+      console.log("NEXT SHOW: "+ event_name + " " + venue + " " + date + " " + start_time);
+    }
+    document.getElementById("Dates").innerHTML = event_string.toUpperCase();
+  });
+  </script>
+</head>
