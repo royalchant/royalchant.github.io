@@ -53,7 +53,7 @@
       date = data.resultsPage.results.event[0].start.date;
       start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
       // supports = data.resultsPage.results.event[0].performance.artist.displayName;
-      event_string = "NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale + " "+ date + " @ " + start_time + "<br>";
+      event_string = "<br>NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale + " "+ date + " @ " + start_time + "<br><br>";
       console.log("NEXT SHOW: "+ event_name + " " + venue + " " + date + " " + start_time);
     }
     document.getElementById("Dates").innerHTML = event_string.toUpperCase();
