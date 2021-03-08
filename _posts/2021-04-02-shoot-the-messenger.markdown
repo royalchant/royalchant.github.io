@@ -2,7 +2,7 @@
 layout: post
 title:  "Shoot The Messenger"
 date:   2021-04-02
-categories: LP
+tags: release
 ---
 ![cover]({{ site.url }}/img/stm.jpg)
 
