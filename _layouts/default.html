@@ -6,24 +6,23 @@
 <body>
 
   <div class="container content">
-    <header class="masthead">
-      <h3 class="masthead-title">
-        <a href="/" title="Home">{{ site.title }}</a> {% for page in site.pages_list %} &nbsp;&nbsp;&nbsp;
-        <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
-        {% endfor %}
-      </h3>
-    </header>
-
     <main>
       {{ content }}
-      {% include comments.html %}
     </main>
 
-    <footer class="footer">
-      <small>
-        &copy;
-        <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
-      </small>
+    <footer style="text-align:center; display:block;">
+      <table cellspacing="0" cellpadding="0" border="0" style="border: 0">
+        <tbody style="border: 0">
+            <tr style="border: 0">
+                <td style="border: 0">
+                  <a href="https://royalchant.com/old" style="text-align:center; display:block;">OLD SITE</a>
+                </td>
+                <td style="border: 0">
+                  <p style="text-align:center; display:block;"> royalchant (at) gmail (dot) com</p>
+                </td>
+            </tr>
+        </tbody>
+      </table>
     </footer>
   </div>
 

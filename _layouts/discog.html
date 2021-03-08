@@ -3,7 +3,7 @@ layout: default
 ---
 
 <ul>
-{% for post in site.tags[page.tag] %}
+{% for post in site.posts %}
   <h3>{{ post.title }}</h3>
   <div>
   {{ post.date | date: "%B, %Y" }}
