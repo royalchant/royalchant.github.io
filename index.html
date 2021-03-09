@@ -31,7 +31,7 @@
 
 
 <!-- <body style="background-color:white;background-image:url(img/bg.jpg);background-repeat:repeat;"> -->
-<body onload="videoThingLoader()">
+<body onload="onLoad()">
   <table cellspacing="0" cellpadding="0" border="0" style="border: 0">
     <tbody style="border: 0">
         <tr style="border: 0">
@@ -44,25 +44,8 @@
         </tr>
     </tbody>
   </table>
-	<script>
-  var url = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
-  $.getJSON(url, function(data){
-  event_string = "No dates :-(";
-  if (data.resultsPage.status == "ok" && data.resultsPage.totalEntries > 0) {
-      console.log(data.resultsPage.results.event[0].displayName);
-      event_name = data.resultsPage.results.event[0].displayName;
-      venue = data.resultsPage.results.event[0].venue.displayName;
-      locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
-      date = data.resultsPage.results.event[0].start.date;
-      start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
-      // supports = data.resultsPage.results.event[0].performance.artist.displayName;
-      event_string = "<br>NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale + " "+ date + " @ " + start_time + "<br><br>";
-      console.log("NEXT SHOW: "+ event_name + " " + venue + " " + date + " " + start_time);
-    }
-    document.getElementById("Dates").innerHTML = event_string.toUpperCase();
-  });
-  </script>
-  <a id="video" onclick="videoThing()" style="text-align:center; display:block;">
+
+  <a id="video" style="text-align:center; display:block;"></a>
   <table cellspacing="0" cellpadding="0" border="0" style="border: 0;">
     <tbody style="border: 0">
           <tr style="border: 0">
@@ -101,9 +84,27 @@
   </table>
 
   <script>
-  function videoThingLoader(){
-    document.getElementById("video").innerHTML = '<img src="img/band.png" alt="band photo" class="center">'
+  function onLoad(){
+    document.getElementById("video").innerHTML = '<img src="img/band.png" alt="band photo" class="center">';
+    var url = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
+    $.getJSON(url, function(data){
+    event_string = "No dates :-(";
+    if (data.resultsPage.status == "ok" && data.resultsPage.totalEntries > 0) {
+        console.log(data.resultsPage.results.event[0].displayName);
+        event_name = data.resultsPage.results.event[0].displayName;
+        venue = data.resultsPage.results.event[0].venue.displayName;
+        locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
+        date = data.resultsPage.results.event[0].start.date;
+        start_time = data.resultsPage.results.event[0].start.time.substring(0, 5);
+        // supports = data.resultsPage.results.event[0].performance.artist.displayName;
+        event_string = "<br>NEXT SHOW: " + date + " @ " + start_time + ' '+ venue + " " + locale + " "+ date + " @ " + start_time + "<br><br>";
+        console.log("NEXT SHOW: "+ event_name + " " + venue + " " + date + " " + start_time);
+      }
+      document.getElementById("Dates").innerHTML = event_string.toUpperCase();
+    });
   }
+  </script>
+  <script>
   function videoThing() {
     var videos = ['<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/gIP8jcGemAY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/LqzCiWWRDJM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/5yAnjgAlxhM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/G_pZGP4jCT4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/HV4KfzoXuKs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/eH64-BUA4_E?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/QvQLmaOj7z4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/XS3raZ8aOj4" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/buxlfEqlQ2I" frameborder="0" allowfullscreen></iframe>' ];
     // console.log(videos[Math.floor(videos.length*Math.random())]);
