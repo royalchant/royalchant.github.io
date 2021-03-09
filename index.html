@@ -46,6 +46,7 @@
   </table>
 
   <a id="video" onclick="videoThing()" style="text-align:center; display:block;"></a>
+
   <table cellspacing="0" cellpadding="0" border="0" style="border: 0;">
     <tbody style="border: 0">
           <tr style="border: 0">
@@ -85,7 +86,7 @@
 
   <script>
   function onLoad(){
-    document.getElementById("video").innerHTML = '<img src="img/band.png" alt="band photo" class="center">';
+    document.getElementById("video").innerHTML = '<iframe width="560" height="315" src="https://www.youtube.com/embed/Ul0hShdOfXg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
     var url = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback=?'
     $.getJSON(url, function(data){
     event_string = "No dates :-(";
