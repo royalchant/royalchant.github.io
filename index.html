@@ -31,8 +31,7 @@
 
 
 <!-- <body style="background-color:white;background-image:url(img/bg.jpg);background-repeat:repeat;"> -->
-<body>
-
+<body onload="videoThingLoader()">
   <table cellspacing="0" cellpadding="0" border="0" style="border: 0">
     <tbody style="border: 0">
         <tr style="border: 0">
@@ -40,7 +39,7 @@
               <a href="https://royalchant.com/discog/" style="text-align:center; display:block;">DISCOGRAPHY</a>
             </td>
             <td style="border: 0">
-              <a href="https://royalchant.com/" style="text-align:center; display:block;">FILMOGRAPHY</a>
+              <a id="videoClicker" onclick="videoThing()" style="text-align:center; display:block;">RANDOM VIDEO</a>
             </td>
         </tr>
     </tbody>
@@ -63,7 +62,7 @@
     document.getElementById("Dates").innerHTML = event_string.toUpperCase();
   });
   </script>
-  <img src="img/band.png" alt="band photo" class="center">
+  <a id="video" onclick="videoThing()" style="text-align:center; display:block;">
   <table cellspacing="0" cellpadding="0" border="0" style="border: 0;">
     <tbody style="border: 0">
           <tr style="border: 0">
@@ -102,7 +101,14 @@
   </table>
 
   <script>
-var videos = ['<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/gIP8jcGemAY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/LqzCiWWRDJM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/5yAnjgAlxhM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/G_pZGP4jCT4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/HV4KfzoXuKs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/eH64-BUA4_E?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/QvQLmaOj7z4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/XS3raZ8aOj4" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/buxlfEqlQ2I" frameborder="0" allowfullscreen></iframe>' ]
+  function videoThingLoader(){
+    document.getElementById("video").innerHTML = '<img src="img/band.png" alt="band photo" class="center">'
+  }
+  function videoThing() {
+    var videos = ['<iframe width="853" height="480" src="https://www.youtube.com/embed/3A2k53Llb3A?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/gIP8jcGemAY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/LqzCiWWRDJM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/5yAnjgAlxhM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/G_pZGP4jCT4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/HV4KfzoXuKs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/eH64-BUA4_E?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/QvQLmaOj7z4?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/XS3raZ8aOj4" frameborder="0" allowfullscreen></iframe>', '<iframe width="853" height="480" src="https://www.youtube.com/embed/buxlfEqlQ2I" frameborder="0" allowfullscreen></iframe>' ];
+    // console.log(videos[Math.floor(videos.length*Math.random())]);
+    document.getElementById("video").innerHTML = videos[Math.floor(videos.length*Math.random())];
+  }
   </script>
 </body>
 
