@@ -100,15 +100,19 @@
   </table>
 
   <script>
-    function iframegenerator(link) {
-      var x_size = 560
-      var y_size = 315
-      // var vid_source = "https://www.youtube.com/embed/Ul0hShdOfXg"
-      var iframe_gen = '<iframe width="' + x_size.toString() + '" height="' + y_size.toString() + '" src="' + link +
-        '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  function iframegenerator(link) {
+    var x_size = 560;
+    var y_size = 315;
+    if (window.innerWidth < 600) {
+      x_size = 240;
+      y_size = 135;
+    }
+    // var vid_source = "https://www.youtube.com/embed/Ul0hShdOfXg"
+    var iframe_gen = '<iframe width="' + x_size.toString() + '" height="' + y_size.toString() + '" src="' + link +
+      '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 
-      return iframe_gen
-    };
+    return iframe_gen
+  };
 
     function onLoad() {
       document.getElementById("video").innerHTML = iframegenerator("https://www.youtube.com/embed/Ul0hShdOfXg");
