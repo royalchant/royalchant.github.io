@@ -2,7 +2,7 @@
 layout: post
 title:  "High Low"
 date:   2014-07-07
-tags: release
+tags: chords
 ---
 ```
 
