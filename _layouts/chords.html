@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<ul>
+{% for post in site.posts %}
+  <h3>{{ post.title }}</h3>
+  <div>
+  {{ post.date | date: "%B, %Y" }}
+  </div>
+{% endfor %}
+</ul>
