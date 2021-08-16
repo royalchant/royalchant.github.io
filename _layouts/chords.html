@@ -4,7 +4,7 @@ layout: default
 
 <ul>
 {% for post in site.tags[page.tag] %}
-  <h3>[{{ post.title }}]({{post.url}})</h3>
+  <h3>[{{ post.title }}]({{site.url}}{{page.url}})</h3>
   <div>
     <br>
   <!-- {{ post.date | date: "%B, %Y" }} -->
