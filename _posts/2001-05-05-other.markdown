@@ -4,7 +4,7 @@ title:  "other"
 date:   2011-05-05
 tags: chords
 ---
-'''
+```
 INTRO:
 
 Amin  F  G
@@ -63,4 +63,4 @@ don’t stop, don’t think
 just try for me...
 
 just try for me....
-'''
+```
