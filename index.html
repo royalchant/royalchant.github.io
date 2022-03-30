@@ -139,7 +139,9 @@
         'https://www.youtube.com/embed/5yAnjgAlxhM?rel=0&amp;showinfo=0', 'https://www.youtube.com/embed/G_pZGP4jCT4?rel=0&amp;showinfo=0', 'https://www.youtube.com/embed/HV4KfzoXuKs?rel=0&amp;showinfo=0',
         'https://www.youtube.com/embed/eH64-BUA4_E?rel=0&amp;showinfo=0', 'https://www.youtube.com/embed/QvQLmaOj7z4?rel=0&amp;showinfo=0', 'https://www.youtube.com/embed/XS3raZ8aOj4', 'https://www.youtube.com/embed/buxlfEqlQ2I'
       ];
-      document.getElementById("video").innerHTML = iframegenerator(videos[Math.floor(videos.length * Math.random())]);
+      let choice = Math.floor(videos.length * Math.random());
+      console.log(choice);
+      document.getElementById("video").innerHTML = iframegenerator(videos[choice]);
     };
   </script>
 </body>
