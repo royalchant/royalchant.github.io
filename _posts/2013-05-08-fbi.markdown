@@ -19,3 +19,6 @@ tags: release
         </tbody>
       </table>
     </div>
+
+New drummer, same 4 chords. 
+ - James

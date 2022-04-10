@@ -20,3 +20,6 @@ tags: release
         </tbody>
       </table>
     </div>
+
+My little brother’s teenager band’s drummer is in RC now. And he’s gotten really tall! He was always a monster drummer.
+ - James

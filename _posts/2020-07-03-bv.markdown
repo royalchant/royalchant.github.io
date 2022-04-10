@@ -20,3 +20,6 @@ tags: release
         </tbody>
       </table>
     </div>
+
+Y’all probably heard about the pandemic right? I finally convinced Mark to set up a home studio and we made this, bouncing project files back and forth over a couple months. Everything you do is a learning experience, I think we learned a lot here.
+ - James

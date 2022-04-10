@@ -4,10 +4,13 @@ layout: default
 
 <ul>
 {% for post in site.posts %}
-  <h3>{{ post.title }}</h3>
+  <h2>{{ post.title }}</h2>
   <div>
   {{ post.date | date: "%B, %Y" }}
   </div>
+  <!-- <i> -->
   {{post.content}}
+  <!-- </i> -->
+  <br><br>
 {% endfor %}
 </ul>

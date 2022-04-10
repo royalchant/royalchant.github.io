@@ -21,3 +21,6 @@ tags: release
         </tbody>
       </table>
     </div>
+
+Working with Cat @ Music Feeds was awesome. And recording to tape felt pretty special. Music Feeds Studio has always been good to RC. I made Mark play the bass on Shake, Shake. We started mixing the baritone with the 6-string with the Nashville tuning and recording tracks with two drummers playing at the same time, all dumb fun things. Shake is my fav track; a big messy wall of noise. Sorta the beginning of my (ongoing) infatuation with Guided By Voices (i knew a couple tracks before but Mark showed me the good stuff).
+ - James

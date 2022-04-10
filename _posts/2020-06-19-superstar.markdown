@@ -20,3 +20,6 @@ tags: release
         </tbody>
       </table>
     </div>
+
+As a bunch of white boys, we have never worried about the cops. We’d do stupid shit without thinking and get away with it. George Floyd should still be alive. There is a lot of work to do. This is when we started aiming all our Bandcamp revenue at charities.
+ - James
