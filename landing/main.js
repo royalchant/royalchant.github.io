@@ -19,6 +19,7 @@ function setupScreen() {
   myDiv.style('padding', '50px');
   myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
   myDiv.center();
+  myDiv.style('overflow', "auto");
   myDiv.show();
 
 }
