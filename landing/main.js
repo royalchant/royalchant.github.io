@@ -1,6 +1,6 @@
 var sky, logo;
 var wind = 0;
-var myDiv, bgDiv, dumbDiv, gigDiv;
+var myDiv, bgDiv, dumbDiv, gigDiv, socialDiv;
 let event_name, venue, locale, date, start_time;
 let gigdata = [];
 var songKick = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback'
@@ -21,6 +21,12 @@ var divString = `
 <br>
 <a href="https://www.youtube.com/user/RoyalChant">YouTube</a>`;
 
+var socials = `
+<a href="http://twitter.com/royalchantmp"> twitter </a> <br>
+<a href="http://facebook.com/royalchant"> facebook </a> <br>
+<a href="http://dirtymabrecords.com/"> tumblr </a> <br>
+<a href="https://slantrhyme.wordpress.com/"> Mark's Blog </a> <br>
+`
 
 function setupScreen() {
   createCanvas(windowWidth, windowHeight);
@@ -36,9 +42,17 @@ function setupScreen() {
   gigDiv = createDiv(gigString);
   gigDiv.style('font-family', "'courier new', courier");
   gigDiv.position(5, 5);
-  let ggsize = x/50;
+  let ggsize = int(x/50);
   gigDiv.style('font-size', ggsize+"px");
   gigDiv.show();
+
+  socialDiv.remove();
+  socialDiv = createDiv(socials);
+  socialDiv.style('font-family', "'courier new', courier");
+  socialDiv.position(windowWidth - 7*ggsize, 5);
+  socialDiv.style('font-size', ggsize+"px");
+  socialDiv.style('text-align', "right");
+  socialDiv.show();
 
   dumbDiv.remove();
   dumbDiv = createDiv(dumbDivString);
@@ -115,6 +129,7 @@ function setup() {
   bgDiv = createDiv(' ');
   dumbDiv = createDiv(' ');
   gigDiv = createDiv(' ');
+  socialDiv = createDiv(' ');
   getGigs(gigJSON);
   setupScreen();
   noStroke();
