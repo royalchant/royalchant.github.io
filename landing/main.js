@@ -4,6 +4,7 @@ var bgDivString = '';
 var dumbDiv;
 var dumbDivString = '<a href="pep">Remember when you could just print a CD and not have to list artist leeching company on the internet?</a>';
 var bg;
+var wind = 0;
 var myGraph;
 var divString = `
 <em>Out Now!</em>
@@ -22,15 +23,9 @@ var divString = `
 
 function setupScreen() {
   createCanvas(windowWidth, windowHeight);
-  myGraph = createGraphics(width, height);
-  for (let i = 0; i <= width; i+= sky.width) {
-    for (let j = 0; j <= height; j+= sky.height) {
-      myGraph.image(sky, i, j);
-    }
-  }
   // myGraph.imageMode(CENTER);
   // myGraph.image(bg, width/2, height/2);
-  let x= min(width, height);
+  let x = min(width, height);
 
   dumbDiv.remove();
   dumbDiv = createDiv(dumbDivString);
@@ -90,10 +85,19 @@ function setup() {
   setupScreen();
   noStroke();
   angleMode(DEGREES);
+  frameRate(30);
 }
 
 function draw() {
-  image(myGraph, 0, 0);
+  if (wind > sky.width){
+    wind = 0;
+  }
+  wind += 0.5;
+  for (let i = -sky.width; i <= width + sky.width; i+= sky.width) {
+    for (let j = 0; j <= height; j+= sky.height) {
+      image(sky, wind + i, j);
+    }
+  }
 }
 
 function windowResized(){
