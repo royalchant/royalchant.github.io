@@ -2,8 +2,8 @@ let _start;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  // ortho();
-  perspective();
+  ortho();
+  // perspective();
   strokeWeight(3);
   background(255);
   _start = -width / 3;
