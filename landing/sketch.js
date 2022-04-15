@@ -8,6 +8,7 @@ var mgImage;
 var combined;
 var weight = 30;
 var transp = 100;
+var myDiv;
 
 // the shader variable
 let camShader;
@@ -55,7 +56,6 @@ function setupScreen() {
   let w = sky.width / 5;
   let h = sky.height / 5;
   let cosScale = PI / width;
-  console.log(cosScale);
   for (let i = 0; i<= width; i+= w) {
     for (let j = 0; j <= height; j+= h) {
       if (j > 3 * h * cos(cosScale * i - 2) + 3*height/5) {
@@ -68,6 +68,13 @@ function setupScreen() {
   combined.image(bgImage, 0, 0);
   combined.image(mgImage, 0, 0);
   combined.image(fgImage, 0, 0);
+  myDiv = createDiv('<h1>ROYAL CHANT<div>Anyways and also sorry...</h1><br>Out Now!<br><a href="royalchant.bandcamp.com">bandcamp</a><br>TIDAL<br>Spotify<br>Apple Music<br>YouTube<br>Google Play<br>');
+  myDiv.style('font-family', "'courier new', courier");
+  myDiv.style('padding', '50px');
+  myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
+  myDiv.position(width/2, height/3);
+  myDiv.center('horizontal');
+  myDiv.show();
 }
 
 function deviceTurned() {
@@ -86,17 +93,9 @@ function preload(){
 }
 
 function setup() {
-  // shaders require WEBGL mode to work
   createCanvas(windowWidth, windowHeight, WEBGL);
-  noStroke();
-
-  // initialize the webcam at the window size
-  // cam = createCapture(VIDEO);
-  // cam.size(windowWidth, windowHeight);
-
-  // hide the html element that createCapture adds to the screen
-  // cam.hide();
   setupScreen();
+  noStroke();
   angleMode(DEGREES);
 
 
@@ -105,19 +104,13 @@ function setup() {
 function draw() {
   let _width = (sin(frameCount/10) + 2) * width;
   let _height = (sin(frameCount/5) + 2) * height;
-
-
-  // shader() sets the active shader with our shader
   shader(camShader);
-
-  // send the camera and the resolution to the shader
   camShader.setUniform('tex0', combined);
   camShader.setUniform('resolution', [_width, _height]);
-
-  // rect gives us some geometry on the screen
-  rect(0,0,width, height);
-
-
+  rect(0,0,windowWidth, windowHeight);
+  // strokeWeight(10);
+  // stroke(255, 0, 0);
+  // line(width/2, 0, width/2, height);
 }
 
 function windowResized(){

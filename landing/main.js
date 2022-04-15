@@ -6,6 +6,7 @@ var rad;
 var mgImage;
 var weight = 30;
 var transp = 100;
+var myDiv;
 
 function deviceTurned() {
   setupScreen();
@@ -75,6 +76,9 @@ function setupScreen() {
 function setup() {
 
   setupScreen();
+  myDiv = createDiv('<h1 id="heading1">ROYAL CHANT<div>Anyways and also sorry...</div></h1>');
+  myDiv.position(center, center);
+  myDive.show();
 
 }
 
