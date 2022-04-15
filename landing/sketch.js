@@ -74,6 +74,7 @@ function setupScreen() {
   myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
   myDiv.position(width/2, height/3);
   myDiv.center('horizontal');
+  myDiv.center('vertical');
   myDiv.show();
 }
 
