@@ -36,7 +36,7 @@ function setupScreen() {
   dumbDiv.style('overflow', "auto");
   dumbDiv.show();
 
-  bgDivString = '<img src="bg.png" width="' + (7*x/8) + '">';
+  bgDivString = '<img src="/awaas-assets/bg.png" width="' + (7*x/8) + '">';
   bgDiv.remove();
   bgDiv = createDiv(bgDivString);
   bgDiv.size((7*x/8), (7*x/8));
@@ -72,9 +72,7 @@ function windowResized() {
 }
 
 function preload(){
-  bg = loadImage('bg.png');
-  sky = loadImage('sky.jpeg');
-  // city = loadImage('buildings.png');
+  sky = loadImage('awaas-assets/sky.jpeg');
 }
 
 function setup() {
