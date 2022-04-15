@@ -9,6 +9,7 @@ var combined;
 var weight = 30;
 var transp = 100;
 var myDiv;
+var drawLayer;
 
 // the shader variable
 let camShader;
@@ -17,7 +18,9 @@ let camShader;
 let cam;
 
 function setupScreen() {
-  createCanvas(windowWidth, windowHeight);
+  console.log(windowWidth, windowHeight);
+  drawLayer = null;
+  resizeCanvas(windowWidth, windowHeight);
   // background sky
   bgImage = createGraphics(width, height);
   for (let i = 0; i <= width; i+= sky.width) {
@@ -68,13 +71,13 @@ function setupScreen() {
   combined.image(bgImage, 0, 0);
   combined.image(mgImage, 0, 0);
   combined.image(fgImage, 0, 0);
+  drawLayer = createGraphics(width, height, WEBGL);
+  myDiv.remove();
   myDiv = createDiv('<h1>ROYAL CHANT<div>Anyways and also sorry...</h1><br>Out Now!<br><a href="royalchant.bandcamp.com">bandcamp</a><br>TIDAL<br>Spotify<br>Apple Music<br>YouTube<br>Google Play<br>');
   myDiv.style('font-family', "'courier new', courier");
   myDiv.style('padding', '50px');
   myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
-  myDiv.position(width/2, height/3);
-  myDiv.center('horizontal');
-  myDiv.center('vertical');
+  myDiv.center();
   myDiv.show();
 }
 
@@ -94,21 +97,21 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight, WEBGL);
+  createCanvas(windowWidth, windowHeight);
+  myDiv = createDiv(' ');
   setupScreen();
   noStroke();
   angleMode(DEGREES);
-
-
 }
 
 function draw() {
   let _width = (sin(frameCount/10) + 2) * width;
   let _height = (sin(frameCount/5) + 2) * height;
-  shader(camShader);
+  drawLayer.shader(camShader);
   camShader.setUniform('tex0', combined);
   camShader.setUniform('resolution', [_width, _height]);
-  rect(0,0,windowWidth, windowHeight);
+  drawLayer.rect(0,0,windowWidth, windowHeight);
+  image(drawLayer, 0, 0);
   // strokeWeight(10);
   // stroke(255, 0, 0);
   // line(width/2, 0, width/2, height);
