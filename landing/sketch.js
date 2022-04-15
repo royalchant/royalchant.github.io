@@ -10,6 +10,26 @@ var weight = 30;
 var transp = 100;
 var myDiv;
 var drawLayer;
+var divString = `
+<h1 style="line-height: 0.8em;">ROYAL CHANT
+<br>
+Anyways and also sorry...</h1>
+<em>Out Now!</em>
+<br>
+<a href="https://royalchant.bandcamp.com/">bandcamp</a> <small><- we have a mailing list & free music here xoxo</small>
+<br>
+TIDAL
+<br>
+Spotify
+<br>
+Apple Music
+<br>
+YouTube
+<br>
+Google Play
+<br>
+<small><small><small><small><a href="pep">remember when you could just print a CD and not have to list artist leeching company on the internet?</a></small></small></small></small>`;
+
 
 // the shader variable
 let camShader;
@@ -73,7 +93,7 @@ function setupScreen() {
   combined.image(fgImage, 0, 0);
   drawLayer = createGraphics(width, height, WEBGL);
   myDiv.remove();
-  myDiv = createDiv('<h1>ROYAL CHANT<div>Anyways and also sorry...</h1><br>Out Now!<br><a href="royalchant.bandcamp.com">bandcamp</a><br>TIDAL<br>Spotify<br>Apple Music<br>YouTube<br>Google Play<br>');
+  myDiv = createDiv(divString);
   myDiv.style('font-family', "'courier new', courier");
   myDiv.style('padding', '50px');
   myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
