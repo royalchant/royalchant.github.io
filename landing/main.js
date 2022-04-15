@@ -14,7 +14,7 @@ function setupScreen() {
   myGraph.imageMode(CENTER);
   myGraph.image(bg, width/2, height/2);
   myDiv.remove();
-  myDiv = createDiv('<h1>ROYAL CHANT<div>Anyways and also sorry...</h1><br>Out Now!<br><a href="royalchant.bandcamp.com">bandcamp</a><br>TIDAL<br>Spotify<br>Apple Music<br>YouTube<br>Google Play<br><small><small><a href="pep">remember when you could just print a CD<br> and not have to list artist leeching company on the internet?</a></small></small>');
+  myDiv = createDiv('<h1>ROYAL CHANT<div>Anyways and also sorry...</h1><br>Out Now!<br><a href="royalchant.bandcamp.com">bandcamp</a><br>TIDAL<br>Spotify<br>Apple Music<br>YouTube<br>Google Play<br><small><small><small><small><a href="pep">remember when you could just print a CD<br> and not have to list artist leeching company on the internet?</a></small></small></small></small>');
   myDiv.style('font-family', "'courier new', courier");
   myDiv.style('padding', '50px');
   myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
