@@ -1,11 +1,9 @@
-var myDiv;
-var bgDiv;
-var bgDivString = '';
-var dumbDiv;
-var dumbDivString = '<a href="pep">Remember when you could just print a CD and not have to list artist leeching company on the internet?</a>';
-var bg;
+var sky, logo;
 var wind = 0;
-var myGraph;
+var myDiv, bgDiv, dumbDiv;
+var bgDivString = '';
+var dumbDivString = '<a href="pep">Remember when you could just print a CD and not have to list artist leeching company on the internet?</a>';
+
 var divString = `
 <em>Out Now!</em>
 <br>
@@ -23,8 +21,6 @@ var divString = `
 
 function setupScreen() {
   createCanvas(windowWidth, windowHeight);
-  // myGraph.imageMode(CENTER);
-  // myGraph.image(bg, width/2, height/2);
   let x = min(width, height);
 
   dumbDiv.remove();
@@ -46,7 +42,8 @@ function setupScreen() {
   let bodySize = int((x/2) / 15);
   let rcSize = int((x/2) / 10);
   let titleSize = int((x/2) / 15);
-  let titleString = '<h1 style="font-size: ' +rcSize + 'px;line-height: 0.8em;">ROYAL CHANT</h1><h1 style="font-size: ' +titleSize + 'px;line-height: 0.8em;">Anyways and also sorry...</h1>'
+  let titleString = '<img src="/awaas-assets/royalchantlogo.gif" width="'+ x/2+ 'px"><h1 style="font-size: ' +titleSize + 'px;line-height: 0.8em;">Anyways and also sorry...</h1>'
+  // let titleString = '<h1 style="font-size: ' +rcSize + 'px;line-height: 0.8em;">ROYAL CHANT</h1><h1 style="font-size: ' +titleSize + 'px;line-height: 0.8em;">Anyways and also sorry...</h1>'
   myDiv.remove();
   myDiv = createDiv(titleString + '<br>' + divString);
   myDiv.style('font-family', "'courier new', courier");
@@ -73,10 +70,10 @@ function windowResized() {
 
 function preload(){
   sky = loadImage('awaas-assets/sky.jpeg');
+  // logo = createImg('awaas-assets/royalchantlogo.gif');
 }
 
 function setup() {
-
   myDiv = createDiv(' ');
   bgDiv = createDiv(' ');
   dumbDiv = createDiv(' ');
