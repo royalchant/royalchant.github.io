@@ -2,7 +2,7 @@ var sky, logo;
 var wind = 0;
 var myDiv, bgDiv, dumbDiv;
 var bgDivString = '';
-var dumbDivString = '<a href="pep">Remember when you could just print a CD and not have to list artist leeching company on the internet?</a>';
+var dumbDivString = '<a href="pep">Remember when you could just print a CD and not have to list every artist leeching company on the internet?</a>';
 
 var divString = `
 <em>Out Now!</em>
