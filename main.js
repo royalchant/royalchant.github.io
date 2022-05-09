@@ -8,10 +8,9 @@ var bgDivString = '';
 var dumbDivString = '<a href="pep">Remember when you could just print a CD and not have to list every artist leeching company on the internet?</a>';
 
 var divString = `
-<em>Out Now!</em>
 <br>
 <a href="https://royalchant.bandcamp.com/">bandcamp</a>
-<br><small>^ we have a mailing list & free music here xoxo</small>
+<br><small>^ mailing list + free music xoxo</small>
 <br>
 <a href="https://tidal.com/browse/artist/6249079">TIDAL</a>
 <br>
@@ -28,23 +27,34 @@ var socials = `
 <a href="https://slantrhyme.wordpress.com/"> Mark's Blog </a> <br>
 `
 
+var releaseDate = new Date('May 20, 2022');
+
 function setupScreen() {
-  createCanvas(windowWidth, windowHeight);
-  let x = min(width, height);
-  let gigString = ''
-  for (let i = 0; i < gigdata.length; i++) {
-    if (!(gigdata[i] === null)) {
-      gigString += gigdata[i] + '<br>';
-    }
+  let today = new Date();
+  let sleeps = releaseDate.getUTCDate() - today.getUTCDate();
+  console.log(sleeps);
+  if (sleeps <= 0) {
+    divString = '<em>Out Now!</em>' + divString;
+  } else {
+    divString = '<em>Drops in ' + str(sleeps) + ' days</em>' + divString;
   }
 
-  gigDiv.remove();
-  gigDiv = createDiv(gigString);
-  gigDiv.style('font-family', "'courier new', courier");
-  gigDiv.position(5, 5);
+  createCanvas(windowWidth, windowHeight);
+  let x = min(width, height);
+  // let gigString = ''
+  // for (let i = 0; i < gigdata.length; i++) {
+  //   if (!(gigdata[i] === null)) {
+  //     gigString += gigdata[i] + '<br>';
+  //   }
+  // }
+  //
+  // gigDiv.remove();
+  // gigDiv = createDiv(gigString);
+  // gigDiv.style('font-family', "'courier new', courier");
+  // gigDiv.position(5, 5);
   let ggsize = int(x/50);
-  gigDiv.style('font-size', ggsize+"px");
-  gigDiv.show();
+  // gigDiv.style('font-size', ggsize+"px");
+  // gigDiv.show();
 
   socialDiv.remove();
   socialDiv = createDiv(socials);
@@ -101,36 +111,36 @@ function windowResized() {
 
 function preload(){
   sky = loadImage('awaas-assets/sky.jpeg');
-  gigJSON = loadJSON(songKick);
+  // gigJSON = loadJSON(songKick);
   // logo = createImg('awaas-assets/royalchantlogo.gif');
 }
 
 
-function getGigs(data) {
-  if (data.resultsPage.status == "ok" && data.resultsPage.totalEntries > 0) {
-    event_name = 'NEXT SHOW:<br><strong>' + data.resultsPage.results.event[0].displayName + '</strong>';
-    gigdata.push(event_name);
-    venue = data.resultsPage.results.event[0].venue.displayName;
-    gigdata.push(venue);
-    locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
-    gigdata.push(locale);
-    date = data.resultsPage.results.event[0].start.date;
-    gigdata.push(date);
-    start_time = data.resultsPage.results.event[0].start.time;
-    gigdata.push(start_time);
-  } else {
-    gigdata.push('no shows :-(');
-  }
-
-}
+// function getGigs(data) {
+//   if (data.resultsPage.status == "ok" && data.resultsPage.totalEntries > 0) {
+//     event_name = 'NEXT SHOW:<br><strong>' + data.resultsPage.results.event[0].displayName + '</strong>';
+//     gigdata.push(event_name);
+//     venue = data.resultsPage.results.event[0].venue.displayName;
+//     gigdata.push(venue);
+//     locale = data.resultsPage.results.event[0].venue.metroArea.displayName;
+//     gigdata.push(locale);
+//     date = data.resultsPage.results.event[0].start.date;
+//     gigdata.push(date);
+//     start_time = data.resultsPage.results.event[0].start.time;
+//     gigdata.push(start_time);
+//   } else {
+//     gigdata.push('no shows :-(');
+//   }
+//
+// }
 
 function setup() {
   myDiv = createDiv(' ');
   bgDiv = createDiv(' ');
   dumbDiv = createDiv(' ');
-  gigDiv = createDiv(' ');
+  // gigDiv = createDiv(' ');
   socialDiv = createDiv(' ');
-  getGigs(gigJSON);
+  // getGigs(gigJSON);
   setupScreen();
   noStroke();
   angleMode(DEGREES);
