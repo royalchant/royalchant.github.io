@@ -30,13 +30,13 @@ var socials = `
 var releaseDate = new Date('May 20, 2022');
 
 function setupScreen() {
-  let today = new Date();
-  let sleeps = releaseDate.getUTCDate() - today.getUTCDate();
-  console.log(sleeps);
-  if (sleeps <= 0) {
+  // let today = new Date();
+  // let sleeps = releaseDate.getUTCDate() - today.getUTCDate();
+  // // console.log(sleeps);
+  // if (sleeps <= 0) {
     divString = '<em>Out Now!</em>' + divString;
-  } else {
-    divString = '<em>Drops in ' + str(sleeps) + ' days</em>' + divString;
+  // } else {
+  //   divString = '<em>Drops in ' + str(sleeps) + ' days</em>' + divString;
   }
 
   createCanvas(windowWidth, windowHeight);
