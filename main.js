@@ -37,7 +37,7 @@ function setupScreen() {
     divString = '<em>Out Now!</em>' + divString;
   // } else {
   //   divString = '<em>Drops in ' + str(sleeps) + ' days</em>' + divString;
-  }
+  // }
 
   createCanvas(windowWidth, windowHeight);
   let x = min(width, height);
