@@ -9,7 +9,7 @@ var bgDivString = '';
 var divString = `
 <center>
 <br>
-<img src="/img/bluntforcedrama.jpg" width=66%>
+<img src="/img/bfd.jpg" width=66%>
 </center>
 
 <div style="position:absolute;width:100%;bottom:0;">
