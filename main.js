@@ -5,11 +5,11 @@ let event_name, venue, locale, date, start_time;
 let gigdata = [];
 var songKick = 'https://api.songkick.com/api/3.0/artists/3678791/calendar.json?apikey=Wm4K3izLltuErN9H&&jsoncallback'
 var bgDivString = '';
-
+//<img src="/fas-assets/fs.jpg" width=66%>
 var divString = `
 <center>
 <br>
-<img src="/fas-assets/fs.jpg" width=66%>
+<img src="/img/bluntforcedrama.jpg" width=66%>
 </center>
 
 <div style="position:absolute;width:100%;bottom:0;">
