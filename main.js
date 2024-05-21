@@ -39,10 +39,10 @@ var divString = `
 </div>`;
 
 var socials = `
-<a href="http://twitter.com/royalchantmp"> twitter </a> <br>
+<a href="https://www.threads.net/@royalchantau"> @royalchant@threads.net </a> <br>
 <a href="http://facebook.com/royalchant"> facebook </a> <br>
 <a href="http://dirtymabrecords.com/"> tumblr </a> <br>
-<a href="www.instagram.com/royalchantau"> insta </a> <br>
+<a href="https://www.instagram.com/royalchantau/"> insta </a> <br>
 <a href="https://slantrhyme.wordpress.com/"> Mark's Blog </a> <br>
 `
 
