@@ -9,7 +9,7 @@ var bgDivString = '';
 var divString = `
 <center>
 <br>
-<img src="/img/bfd.jpg" width=66%>
+<img src="/img/tripwires.jpg" width=66%>
 </center>
 
 <div style="position:absolute;width:100%;bottom:0;">
@@ -40,7 +40,9 @@ var divString = `
 
 var socials = `
 <div>
-<a href="https://www.threads.net/@royalchantau"> threads </a> <br>
+
+<a href="https://bsky.app/profile/royalchant.bsky.social"> bluesky </a> <br>
+<a href="https://www.tiktok.com/@RoyalChant"> tik tok </a> <br>
 <a href="http://facebook.com/royalchant"> facebook </a> <br>
 <a href="http://dirtymabrecords.com/"> tumblr </a> <br>
 <a href="https://www.instagram.com/royalchantau/"> insta </a> <br>
