@@ -3,6 +3,7 @@
 // Global variables
 let sky;
 let wind = 0;
+let mainCanvas;
 let myDiv, bgDiv, socialDiv;
 
 // Main page content
@@ -44,17 +45,25 @@ const socials = `
  * Called by setup(), windowResized(), and deviceTurned().
  */
 function setupScreen() {
-  createCanvas(windowWidth, windowHeight);
-  const x = min(width, height);
+  hideRevealAfter();
+  let ratio = 0.9;
+  mainCanvas.resize(windowWidth, ratio*windowHeight);
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const x = min(viewportWidth, viewportHeight);
   const ggsize = int(x / 50);
 
   // Recreate and style the socials div
   socialDiv.remove();
+  
   socialDiv = createDiv(socials);
+  socialDiv.id('socialDiv');
   socialDiv.style('font-family', "'courier new', courier");
   socialDiv.style('font-size', ggsize + 'px');
   socialDiv.style('text-align', 'right');
-  socialDiv.position(windowWidth - 7 * ggsize, 5);
+  socialDiv.position(viewportWidth - 7 * ggsize, 5);
+  socialDiv.style('position', 'absolute');
+  socialDiv.style('z-index', '10');
   socialDiv.show();
 
   // Create/position the main content
@@ -65,24 +74,49 @@ function setupScreen() {
   myDiv.remove();
   myDiv = createDiv(titleString + '<br>' + divString);
   myDiv.id('myDiv');
+  myDiv.id('myDiv');
   myDiv.style('font-family', "'courier new', courier");
   myDiv.style('padding', '50px');
   myDiv.style('font-size', ggsize + 'px');
-  myDiv.size((3 * x) / 4, (3 * x) / 4);
+  myDiv.size((5 * x) / 8, (5 * x) / 8);
   myDiv.style('background-color', 'rgba(255, 255, 255, 10)');
   myDiv.style('overflow', 'auto');
-  myDiv.center();
+  myDiv.position((viewportWidth - myDiv.width)/2, (ratio*windowHeight - myDiv.height)/2);
+
+  // myDiv.center();
   myDiv.show();
+  fadeInRevealAfter();
 }
 
 // p5.js special function called on device orientation change
 function deviceTurned() {
+  hideRevealAfter();
   setupScreen();
 }
 
 // p5.js special function called whenever the window size changes
 function windowResized() {
+  hideRevealAfter();
   setupScreen();
+}
+
+function hideRevealAfter() {
+  const elements = document.querySelectorAll('.revealAfter');
+  elements.forEach(el => {
+    el.style.display = 'none';
+    el.style.opacity = '0'; // Ensure opacity is also set to 0 for the fade effect
+  });
+}
+
+function fadeInRevealAfter(duration = 1000) {
+  const elements = document.querySelectorAll('.revealAfter');
+  elements.forEach(el => {
+    el.style.display = 'block'; // Make the element visible
+    el.style.transition = `opacity ${duration}ms ease-in-out`; // Set fade transition
+    requestAnimationFrame(() => {
+      el.style.opacity = '1'; // Trigger the fade effect
+    });
+  });
 }
 
 // Preload assets
@@ -96,11 +130,10 @@ function preload() {
  */
 function setup() {
   myDiv = createDiv(' ');
-  bgDiv = createDiv(' ');
   socialDiv = createDiv(' ');
 
   // If you load JSON above, you can process with getGigs(gigJSON);
-
+  mainCanvas = createCanvas(windowWidth, windowHeight);
   setupScreen();
 
   noStroke();
