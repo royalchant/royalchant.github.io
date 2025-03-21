@@ -10,10 +10,10 @@ let myDiv, bgDiv, socialDiv;
 const divString = `
 <center>
   <br>
-  <img src="/img/tripwires.jpg" width="66%">
+  <img src="/img/byob.jpg" width="66%">
 </center>
 <div style="position:absolute;width:100%;bottom:0;">
-  new single / out now!
+  new album / out now!
   <table style="width:100%">
     <tr>
       <td><a href="https://royalchant.bandcamp.com/">bandcamp</a></td>
