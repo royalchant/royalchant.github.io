@@ -37,6 +37,7 @@ const socials = `
   <a href="http://facebook.com/royalchant"> facebook </a> <br>
   <a href="https://www.instagram.com/royalchantau/"> insta </a> <br>
   <a href="https://slantrhyme.wordpress.com/"> Mark's Blog </a> <br>
+  <a href="mailto:royalchant@gmail.com">email</a>
 </div>
 `;
 
